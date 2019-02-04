@@ -4,6 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RoutingModule } from './routing.module';
 import { FormsModule } from "@angular/forms";
+import { LoginComponent } from './security/login/login.component';
+import { AuthGuard } from './auth.guard';
+import { ComponentInteractionService } from './service/component-interaction.service';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,8 @@ import { FormsModule } from "@angular/forms";
     RoutingModule,
     FormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [AuthGuard, ComponentInteractionService],
+  bootstrap: [AppComponent],
+  entryComponents: [LoginComponent]
 })
 export class AppModule { }

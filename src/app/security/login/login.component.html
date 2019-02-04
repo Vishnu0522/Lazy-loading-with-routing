@@ -1,0 +1,14 @@
+<form [formGroup]="loginForm">
+  <div>
+    <label>Email Id:</label>
+    <input formControlName="EmailId">
+  </div>
+  <div>
+    <label>Password:</label>
+    <input formControlName="Password">
+  </div>
+  <div>
+    <input (click)="onSubmit()" type="button" class="btn btn-primary" value="Sign In" [disabled]="loginForm.invalid" />
+    <a (click)="onClickRegister()" style="cursor:pointer">Register Now!!</a>
+  </div>
+</form>
