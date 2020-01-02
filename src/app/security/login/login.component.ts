@@ -25,9 +25,15 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      this._componentIntractionService.isAuthenticated = this.loginForm.value.EmailId ? true : false;
+      this._componentIntractionService.isAuthenticated = this.checkLoginCredential(this.loginForm);
       this._router.navigate(['author']);
     }
+  }
+
+  checkLoginCredential(loginForm: FormGroup) {
+    let status = (loginForm.controls["EmailId"].value == 'vicky786gupta@gmail.com' &&
+      loginForm.controls["Password"].value == '1234')?true:false;
+      return status;
   }
 
 }
