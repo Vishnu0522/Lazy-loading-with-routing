@@ -25,15 +25,18 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      this._componentIntractionService.isAuthenticated = this.checkLoginCredential(this.loginForm);
-      this._router.navigate(['author']);
+      if (this.checkLoginCredential(this.loginForm)) {
+        this._componentIntractionService.isAuthenticated = true;
+        this._router.navigate(['author']);
+      }
+      else this._router.navigate(['']);
     }
   }
 
   checkLoginCredential(loginForm: FormGroup) {
     let status = (loginForm.controls["EmailId"].value == 'vicky786gupta@gmail.com' &&
-      loginForm.controls["Password"].value == '1234')?true:false;
-      return status;
+      loginForm.controls["Password"].value == '1234') ? true : false;
+    return status;
   }
 
 }
